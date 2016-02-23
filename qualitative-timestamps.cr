@@ -7,11 +7,10 @@ hours_ago = Time.now - 5.hour
 minutes_ago = Time.now - 5.minute
 seconds_ago = Time.now - 20.second
 moments_ago = Time.now - 1.second
+
 now = Time.now
 
 timestamps = Set{hours_ago, minutes_ago, seconds_ago, moments_ago}
-puts timestamps
-puts timestamps.class
 
 timestamps.each do |timestamp|
 	span = now - timestamp
