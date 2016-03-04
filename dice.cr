@@ -17,10 +17,11 @@ d_twenty = Die.new 20
 d_six = Die.new 6
 dice = [d_twenty, d_six]
 
-rolls = dice.each()
-rolls.each { |die|
+dice.each do |die|
 	puts "rolling d" + die.sides.to_s
-	puts die.roll
-	}
+	(1..10).each do |time|
+		puts time.to_s + ": " + die.roll.to_s
+	end
+end
 
 
