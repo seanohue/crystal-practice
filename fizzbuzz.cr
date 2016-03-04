@@ -1,17 +1,15 @@
-# 2-23-2016
-number = 1
-while number < 100
+#3-4-2016
+Range.new(1, 100).each do |n|
   msg = ""
-  if number.modulo(3) == 0
+  if n.modulo(3) == 0
     msg = msg + "Fizz"
   end
-  if number.modulo(5) == 0
+  if n.modulo(5) == 0
     msg = msg + "Buzz"
   end
   if msg == ""
-    puts number
+    puts n
   else 
     puts msg
   end
-  number += 1
 end
