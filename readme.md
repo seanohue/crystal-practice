@@ -13,3 +13,5 @@ Follow the [Crystal installation directions](http://crystal-lang.org/docs/instal
 #####Running the Rust examples:
 
 You can run them as an executable in your terminal. For example, `./fizzbuzz` while in the Rust directory.
+
+If you want to mess around with them and recompile the executable, follow the [Rust installation directions](https://doc.rust-lang.org/book/getting-started.html#installing-rust) then compile with `rustc fizzbuzz.rs`.
