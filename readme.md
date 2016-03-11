@@ -9,3 +9,7 @@ Follow the [Dart installation directions](https://www.dartlang.org/downloads/mac
 #####Running the Crystal examples:
 
 Follow the [Crystal installation directions](http://crystal-lang.org/docs/installation/index.html) then `crystal fizzbuzz.cr`.
+
+#####Running the Rust examples:
+
+You can run them as an executable in your terminal. For example, `./fizzbuzz` while in the Rust directory.
