@@ -1,7 +1,7 @@
 fn main(){
 	let mut count = 0u32;
 	
-	loop{
+	loop {
 		count += 1;
 
 		if count % 3 == 0 {
