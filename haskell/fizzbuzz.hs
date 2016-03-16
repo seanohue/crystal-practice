@@ -1,19 +1,25 @@
 module Main where
 
+main :: IO()
+main = mapM_ fizzbuzz [1..100]
+
 fizzbuzz :: Int -> IO()
 fizzbuzz n = do
   putStrLn (fizzbuzzStr n)
 
-
 fizzbuzzStr :: Int -> String
 fizzbuzzStr n =
-  if ((n `rem` 3) == 0) && ((n `rem` 5) == 0)
+  if evenDiv n 3 && evenDiv n 5
     then "FizzBuzz"
-    else if (n `rem` 3) == 0 
+    else if evenDiv n 3 
       then "Fizz"
-      else if (n `rem` 5) == 0 
+      else if evenDiv n 5
         then "Buzz"
         else show n
 
-main :: IO()
-main = mapM_ fizzbuzz [1..100]
+evenDiv :: Int -> Int -> Bool
+evenDiv x y = (x `rem` y) == 0
+
+
+
+
