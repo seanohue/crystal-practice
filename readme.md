@@ -15,3 +15,11 @@ Follow the [Crystal installation directions](http://crystal-lang.org/docs/instal
 You can run them as an executable in your terminal. For example, `./fizzbuzz` while in the Rust directory.
 
 If you want to mess around with them and recompile the executable, follow the [Rust installation directions](https://doc.rust-lang.org/book/getting-started.html#installing-rust) then compile with `rustc fizzbuzz.rs`.
+
+#####Running the Haskell examples:
+
+Install `runhaskell` using `brew install ghc cabal-install` first, then do `runhaskell fizzbuzz.hs`.
+
+#####Running the Erlang examples:
+
+Install `erl` using `brew install erlang` then do `erl`. In the REPL, type `c(fizzbuzz)` to compile then `fizzbuzz:fizzbuzzer(100)`.
