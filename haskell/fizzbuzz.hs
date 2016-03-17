@@ -1,4 +1,4 @@
-module Main where
+module FizzBuzz where
 
 main :: IO()
 main = mapM_ fizzbuzz [1..100]
