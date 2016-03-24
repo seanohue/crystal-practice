@@ -23,3 +23,7 @@ Install `runhaskell` using `brew install ghc cabal-install` first, then do `runh
 #####Running the Erlang examples:
 
 Install `erl` using `brew install erlang` then do `erl`. In the REPL, type `c(fizzbuzz)` to compile then `fizzbuzz:fizzbuzzer(100)`.
+
+######Running the TypeScript examples:
+
+If you have node installed, you can run it using `node dice.js`.
