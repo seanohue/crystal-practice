@@ -8,14 +8,10 @@ fizzbuzz n = do
   putStrLn (fizzbuzzStr n)
 
 fizzbuzzStr :: Int -> String
-fizzbuzzStr n =
-  if evenDiv n 3 && evenDiv n 5
-    then "FizzBuzz"
-    else if evenDiv n 3 
-      then "Fizz"
-      else if evenDiv n 5
-        then "Buzz"
-        else show n
+fizzbuzzStr n | evenDiv n 3 && evenDiv n 5 = "FizzBuzz"
+              | evenDiv n 3                = "Fizz"
+              | evenDiv n 5                = "Buzz"
+              | otherwise                  = show n
 
 evenDiv :: Int -> Int -> Bool
 evenDiv x y = (x `rem` y) == 0
