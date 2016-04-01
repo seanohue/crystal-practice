@@ -36,7 +36,15 @@ class Character
   end
 
   def attack(tohit, ac)
-    tohit >= ac
+    if tohit < ac
+      return 0
+    end
+
+    if tohit == 20
+      return 2
+    end
+
+    return 1
   end
 
   def damage
@@ -48,7 +56,6 @@ class Character
   end
 
 end
-
 # spec
 
 describe "Character" do
@@ -108,16 +115,16 @@ describe "Character" do
   # As a combatant I want to be able to attack other combatants so that I can survive to fight another day
 
   describe "#attack" do
-    it "returns true if roll beats AC" do
+    it "returns 1 if roll beats AC" do
       test_char = Character.new "Pidgeotto"
       hit = test_char.attack 15, 10
-      hit.should be_true
+      hit.should eq 1
     end
 
-    it "returns false if roll lower than AC" do
+    it "returns 0 if roll lower than AC" do
       test_char = Character.new "Magikarp"
       hit = test_char.attack 3, 10
-      hit.should be_false
+      hit.should eq 0
     end
   end
 
@@ -129,11 +136,11 @@ describe "Character" do
       defender = Character.new "Zebra"
       hit = attacker.attack 10, defender.armorclass
       before_hp = defender.hitpoints
-      
+
       if hit
         defender.damage
       end
-      
+
       defender.hitpoints.should eq (before_hp - 1)
     end
 
@@ -149,6 +156,18 @@ describe "Character" do
 
       defender.hitpoints.should eq (before_hp - 5)
     end
-  end
 
+    it "does critical damage if attacker rolls a 20" do
+      attacker = Character.new "Drizzt"
+      defender = Character.new "kobold"
+      hit = attacker.attack 20, defender.armorclass
+      before_hp = defender.hitpoints
+
+      if hit
+        defender.damage (hit * 1)
+      end
+      defender.hitpoints.should eq (before_hp - 2)
+    end
+  end
 end
+
