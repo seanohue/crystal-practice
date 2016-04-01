@@ -5,6 +5,8 @@ class Character
   def initialize(name)
     @name = name
     @alignment = "Neutral"
+    @hitpoints = 10
+    @armorclass = 5
   end
 
   def name
@@ -24,6 +26,15 @@ class Character
       @alignment = al.capitalize
     end
   end
+
+  def hitpoints
+    @hitpoints
+  end
+
+  def armorclass
+    @armorclass
+  end
+
 end
 
 # spec
@@ -63,6 +74,22 @@ describe "Character" do
       test_char = Character.new "Burrito"
       test_char.alignment "taco bell"
       test_char.alignment.should eq "Neutral"
+    end
+  end
+
+  # As a combatant I want to have an armor class and hit points so that I can resist attacks from my enemies
+
+  describe "#hitpoints" do
+    it "correctly sets the default HP to 10" do
+      test_char = Character.new "Xena"
+      test_char.hitpoints.should eq 10
+    end
+  end
+
+  describe "#armorclass" do
+    it "correctly sets default AC to 5" do
+      test_char = Character.new "Hercules"
+      test_char.armorclass.should eq 5
     end
   end
 
