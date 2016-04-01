@@ -35,6 +35,10 @@ class Character
     @armorclass
   end
 
+  def attack(tohit, ac)
+    tohit >= ac
+  end
+
 end
 
 # spec
@@ -93,5 +97,19 @@ describe "Character" do
     end
   end
 
+  # As a combatant I want to be able to attack other combatants so that I can survive to fight another day
 
+  describe "#attack" do
+    it "returns true if roll beats AC" do
+      test_char = Character.new "Pidgeotto"
+      hit = test_char.attack 15, 10
+      hit.should be_true
+    end
+
+    it "returns false if roll lower than AC" do
+      test_char = Character.new "Magikarp"
+      hit = test_char.attack 3, 10
+      hit.should be_false
+    end
+  end
 end
