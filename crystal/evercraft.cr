@@ -39,6 +39,14 @@ class Character
     tohit >= ac
   end
 
+  def damage
+    @hitpoints -= 1
+  end
+
+  def damage(inflicted)
+    @hitpoints -= inflicted
+  end
+
 end
 
 # spec
@@ -112,4 +120,35 @@ describe "Character" do
       hit.should be_false
     end
   end
+
+  # As an attacker I want to be able to damage my enemies so that they will die and I will live
+
+  describe "#damage" do
+    it "does 1 damage by default to defender if attack hits" do
+      attacker = Character.new "Lion"
+      defender = Character.new "Zebra"
+      hit = attacker.attack 10, defender.armorclass
+      before_hp = defender.hitpoints
+      
+      if hit
+        defender.damage
+      end
+      
+      defender.hitpoints.should eq (before_hp - 1)
+    end
+
+    it "can do a specified amount of damage" do
+      attacker = Character.new "Lion"
+      defender = Character.new "Zebra"
+      hit = attacker.attack 10, defender.armorclass
+      before_hp = defender.hitpoints
+
+      if hit
+        defender.damage 5
+      end
+
+      defender.hitpoints.should eq (before_hp - 5)
+    end
+  end
+
 end
