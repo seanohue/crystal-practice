@@ -3,10 +3,18 @@ require "spec"
 
 class Character
   def initialize(name)
-    @name = name
-    @alignment = "Neutral"
-    @hitpoints = 10
+    @name       = name
+    @alignment  = "Neutral"
+    @hitpoints  = 10
     @armorclass = 5
+    @abilities  = {
+      "constitution": 10,
+      "strength":     10,
+      "dexterity":    10,
+      "wisdom":       10,
+      "charisma":     10,
+      "intelligence": 10
+    }
   end
 
   def name
@@ -33,6 +41,20 @@ class Character
 
   def armorclass
     @armorclass
+  end
+
+  def abilities
+    @abilities
+  end
+
+  def set_ability(ability, score)
+    if score < 0 
+      score = 0
+    elsif score > 20
+      score = 20
+    end
+
+    @abilities[ability] = score
   end
 
   def attack(tohit, ac)

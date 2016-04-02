@@ -1,4 +1,5 @@
 require "./evercraft"
+require "spec"
 
 describe "Character" do
 
@@ -109,6 +110,14 @@ describe "Character" do
         defender.damage (hit * 1)
       end
       defender.hitpoints.should eq (before_hp - 2)
+    end
+  end
+
+  describe "#abilities" do
+    it "defaults to 10 for all abilities" do
+      test_char = Character.new "Pantalones McGee"
+      defaults = test_char.abilities
+      defaults.each { |key, value| value.should eq 10 }
     end
   end
 end
