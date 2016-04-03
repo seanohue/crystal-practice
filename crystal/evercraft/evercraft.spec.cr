@@ -119,5 +119,24 @@ describe "Character" do
       defaults = test_char.abilities
       defaults.each { |key, value| value.should eq 10 }
     end
+
+    it "should be able to get a specific ability" do
+      test_char = Character.new "Cooke"
+      strength = test_char.get_ability "strength"
+      strength.should eq 10
+    end
+
+    it "should be able to set or change abilities" do
+      test_char = Character.new "Bruce Banner"
+      test_char.set_ability("strength", 20)
+      hulked = test_char.get_ability "strength"
+      hulked.should eq 20
+    end
+
+    it "should have a modifier score" do
+      test_char = Character.new "Average"
+      str_mod = test_char.get_modifier "strength" 
+      str_mod.should eq 0
+    end
   end
 end
