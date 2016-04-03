@@ -138,5 +138,23 @@ describe "Character" do
       str_mod = test_char.get_modifier "strength" 
       str_mod.should eq 0
     end
+
+    it "should work for multiple modifiers" do
+      wiz = Character.new "Merlin"
+      wiz.set_ability("wisdom", 20)
+      wiz_mod = wiz.get_modifier "wisdom"
+      wiz_mod.should eq 5
+
+      wimp = Character.new "Stanley"
+      wimp.set_ability("constitution", 3)
+      con_mod = wimp.get_modifier "constitution"
+      con_mod.should eq -4
+
+      rogue = Character.new "Beatrice"
+      rogue.set_ability("dexterity", 16)
+      dex_mod = rogue.get_modifier "dexterity"
+      dex_mod.should eq 3
+
+    end
   end
 end
