@@ -1,0 +1,4 @@
+name: "evercraft_kata"
+author: "Sean O'Donohue"
+dependencies:
+  test: "^0.12.13"

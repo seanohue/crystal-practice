@@ -30,8 +30,9 @@ class Character
   end
 
   def alignment(al)
-    if ["Good", "Evil", "Neutral"].includes? al.capitalize
-      @alignment = al.capitalize
+    al = al.capitalize
+    if ["Good", "Evil", "Neutral"].includes? al
+      @alignment = al
     end
   end
 
