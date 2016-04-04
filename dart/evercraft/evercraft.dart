@@ -2,7 +2,25 @@ import "package:test/test.dart";
 
 class Character {
   String name;
-  String alignment = "Neutral";
+  String _alignment = "neutral";
+  
+  alignment([String alignment]) {
+    if (alignment != null) {
+      var acceptedAlignments = [
+        "good", 
+        "neutral", 
+        "evil"
+      ];      
+      
+      alignment = alignment.toLowerCase();
+
+      if (acceptedAlignments.contains(alignment)) {
+        this._alignment = alignment;
+      }
+
+    } 
+   return this._alignment;
+  }
 
   Character(this.name);
 }
@@ -23,13 +41,13 @@ void main() {
 
     test("should have an alignment", () {
       var testchar = new Character('Frodo');
-      expect(testchar.alignment, equals('Neutral'));
+      expect(testchar.alignment(), equals('neutral'));
     });
 
     test("should be able to change alignment", () {
       var testchar = new Character('Cinder');
-      testchar.alignment = "Evil";
-      expect(testchar.alignment, equals('Evil'));
+      testchar.alignment("Evil");
+      expect(testchar.alignment(), equals('evil'));
     });
 
   });
