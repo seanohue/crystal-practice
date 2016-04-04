@@ -2,9 +2,12 @@ import "package:test/test.dart";
 
 class Character {
   String name;
-  String _alignment = "neutral";
+  String _alignment;
   
-  alignment([String alignment]) {
+  alignment([alignment]) {
+    String name;
+    String _alignment;
+    
     if (alignment != null) {
       var acceptedAlignments = [
         "good", 
@@ -19,12 +22,15 @@ class Character {
       } else {
         throw new ArgumentError('Invalid alignment. Valid choices are good, neutral, and evil.');
       }
+    }
 
-    } 
    return this._alignment;
   }
 
-  Character(this.name);
+  Character(String name, [String alignment = 'neutral']) {
+    this.name = name;
+    this._alignment = alignment;
+  }
 }
 
 void main() {
@@ -50,6 +56,11 @@ void main() {
       var testchar = new Character('Cinder');
       testchar.alignment("Evil");
       expect(testchar.alignment(), equals('evil'));
+    });
+
+    test("can be initialized with an alignment", () {
+      var testchar = new Character('Yang', 'good');
+      expect(testchar.alignment(), equals('good'));
     });
 
   });
