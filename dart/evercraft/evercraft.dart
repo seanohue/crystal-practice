@@ -5,8 +5,6 @@ class Character {
   String _alignment;
   
   alignment([alignment]) {
-    String name;
-    String _alignment;
     
     if (alignment != null) {
       var acceptedAlignments = [
@@ -63,5 +61,11 @@ void main() {
       expect(testchar.alignment(), equals('good'));
     });
 
+    test("should throw exception for invalid alignment", () {
+      var testchar = new Character('Bean');
+      expect(
+        ()=>testchar.alignment('burrito'), 
+        throwsArgumentError);
+    });
   });
 }
