@@ -5,16 +5,17 @@ class Character {
   String _alignment;
   Integer armorClass;
   Integer hitPoints;
+  Boolean alive = true;
   
   alignment([alignment]) {
-    
+
     if (alignment != null) {
       var acceptedAlignments = [
         "good", 
         "neutral", 
         "evil"
-      ];      
-      
+      ];
+
       alignment = alignment.toLowerCase();
 
       if (acceptedAlignments.contains(alignment)) {
@@ -28,8 +29,23 @@ class Character {
    return this._alignment;
   }
                         // Guaranteed to be random
-  Boolean hit(opponent, [Integer tohit = 4]){
-    return opponent.armorClass < tohit;
+  Boolean hit(Character opponent, [Integer toHitRoll = 4]){
+    Boolean success = opponent.armorClass < toHitRoll;
+    Integer amount = 1;
+
+    if (toHitRoll == 20){
+      amount = amount * 2;
+    }
+    
+    if (success){
+      opponent.damage(amount);
+    }
+
+    return success;
+  }
+
+  damage([Integer amount = 1]) {
+    this.hitPoints = this.hitPoints - amount;
   }
 
   Character(String  name, 
@@ -106,6 +122,25 @@ void main() {
         var defender = new Character("Colossus", armorClass: 20);
         expect(attacker.hit(defender), equals(false));
       });
+
+      test("should damage opponent by 1 if the attack hits", () {
+        var attacker = new Character("Blake");
+        var defender = new Character("Grimm", armorClass: 13);
+        var init_hp = defender.hitPoints;
+
+        attacker.hit(defender, 14);
+        assert(defender.hitPoints == init_hp -1);
+      });
+
+      test("should damage opponent by 2 if the attack is a crit", () {
+        var attacker = new Character("Drizzt");
+        var defender = new Character("kobold", armorClass: 2);
+        var init_hp = defender.hitPoints;
+
+        attacker.hit(defender, 20);
+        assert(defender.hitPoints == init_hp - 2); 
+      });
+
     });
 
   });
