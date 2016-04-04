@@ -16,6 +16,8 @@ class Character {
 
       if (acceptedAlignments.contains(alignment)) {
         this._alignment = alignment;
+      } else {
+        throw new ArgumentError('Invalid alignment. Valid choices are good, neutral, and evil.');
       }
 
     } 
