@@ -3,6 +3,8 @@ import "package:test/test.dart";
 class Character {
   String name;
   String _alignment;
+  Integer armorClass;
+  Integer hitPoints;
   
   alignment([alignment]) {
     
@@ -25,9 +27,16 @@ class Character {
    return this._alignment;
   }
 
-  Character(String name, [String alignment = 'neutral']) {
+  Character(String  name, 
+           [String  alignment  = 'neutral',
+            Integer armorClass = 10,
+            Integer hitPoints  = 5 ]) 
+  {
+    
     this.name = name;
     this._alignment = alignment;
+    this.armorClass = armorClass;
+    this.hitPoints = hitPoints;
   }
 }
 
@@ -63,9 +72,17 @@ void main() {
 
     test("should throw exception for invalid alignment", () {
       var testchar = new Character('Bean');
-      expect(
-        ()=>testchar.alignment('burrito'), 
-        throwsArgumentError);
+      expect( () => testchar.alignment('burrito'), throwsArgumentError);
+    });
+
+    test("should have armor class, default 10", () {
+      var testchar = new Character('Broomhilda');
+      expect(testchar.armorClass, equals(10));
+    });
+
+    test("should have hitpoints, default 5", () {
+      var testchar = new Character('Django');
+      expect(testchar.hitPoints, equals(5));
     });
   });
 }
