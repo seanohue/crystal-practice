@@ -42,7 +42,7 @@ class Character
   end
 
   def armorclass
-    @armorclass
+    @armorclass + get_modifier "dexterity"
   end
 
   def abilities

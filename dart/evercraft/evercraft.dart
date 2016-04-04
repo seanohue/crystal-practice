@@ -48,15 +48,15 @@ class Character {
     this.hitPoints = this.hitPoints - amount;
   }
 
-  Character(String  name, 
-           { String  alignment: "neutral",
+  Character( String  name, 
+           { String  alignment:   "neutral",
              Integer  armorClass: 10,
-             Integer  hitPoints: 5 }) 
+             Integer  hitPoints:  5 }) 
   {
-    this.name = name;
+    this.name       = name;
     this._alignment = alignment;
     this.armorClass = armorClass;
-    this.hitPoints = hitPoints;
+    this.hitPoints  = hitPoints;
   }
 }
 

@@ -156,5 +156,12 @@ describe "Character" do
       dex_mod.should eq 3
 
     end
+
+    it "should add dexterity bonus to armor class" do
+      ninja = Character.new "Ninja"
+      ninja.set_ability("dexterity", 20)
+      ninja.armorclass.should eq 10
+    end
+
   end
 end
