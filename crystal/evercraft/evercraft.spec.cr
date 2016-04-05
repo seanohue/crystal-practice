@@ -113,6 +113,9 @@ describe "Character" do
     end
   end
 
+# As a character I want to have several abilities so that I am not identical to other characters except in name
+
+
   describe "#abilities" do
     it "defaults to 10 for all abilities" do
       test_char = Character.new "Pantalones McGee"
@@ -157,10 +160,16 @@ describe "Character" do
 
     end
 
-    it "should add dexterity bonus to armor class" do
-      ninja = Character.new "Ninja"
-      ninja.set_ability("dexterity", 20)
-      ninja.armorclass.should eq 10
+    # As a character I want to apply my ability modifiers improve my capabilities in combat so that I can vanquish my enemy with extreme prejudice
+
+    describe "ability bonuses" do
+
+      it "should add dexterity bonus to armor class" do
+        ninja = Character.new "Ninja"
+        ninja.set_ability("dexterity", 20)
+        ninja.armorclass.should eq 10
+      end
+
     end
 
   end
