@@ -3,14 +3,14 @@ import "package:test/test.dart";
 class Character {
   String name;
   String _alignment;
-  Integer armorClass;
-  Integer hitPoints;
-  Boolean alive = true;
+  int armorClass;
+  int hitPoints;
+  bool alive = true;
   
   alignment([alignment]) {
 
     if (alignment != null) {
-      var acceptedAlignments = [
+      final acceptedAlignments = [
         "good", 
         "neutral", 
         "evil"
@@ -29,9 +29,9 @@ class Character {
    return this._alignment;
   }
                         // Guaranteed to be random
-  Boolean hit(Character opponent, [Integer toHitRoll = 4]){
-    Boolean success = opponent.armorClass < toHitRoll;
-    Integer amount = 1;
+  bool hit(Character opponent, [int toHitRoll = 4]){
+    bool success = opponent.armorClass < toHitRoll;
+    int amount = 1;
 
     if (toHitRoll == 20){
       amount = amount * 2;
@@ -44,14 +44,14 @@ class Character {
     return success;
   }
 
-  damage([Integer amount = 1]) {
+  damage([int amount = 1]) {
     this.hitPoints = this.hitPoints - amount;
   }
 
   Character( String  name, 
            { String  alignment:   "neutral",
-             Integer  armorClass: 10,
-             Integer  hitPoints:  5 }) 
+             int  armorClass: 10,
+             int  hitPoints:  5 }) 
   {
     this.name       = name;
     this._alignment = alignment;
