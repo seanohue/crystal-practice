@@ -170,6 +170,16 @@ describe "Character" do
         ninja.armorclass.should eq 10
       end
 
+      describe "strength bonuses" do
+        tank = Character.new "Tank"
+        tank.set_ability("strength", 18);
+        mook = Character.new "Mook"
+
+        it "should add strength bonus to damage dealt"
+          # oh god i need to refactor all of the things
+        end
+
+      end
     end
 
   end
