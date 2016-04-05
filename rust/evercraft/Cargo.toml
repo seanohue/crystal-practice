@@ -1,0 +1,6 @@
+[package]
+name = "evercraft"
+version = "0.1.0"
+authors = ["Sean O'Donohue <sean.odonohue@detroitlabs.com>"]
+
+[dependencies]
