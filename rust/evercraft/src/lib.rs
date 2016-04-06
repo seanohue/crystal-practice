@@ -9,15 +9,15 @@ mod test {
     }
 
     #[test]
-    fn it_works() {
-    }
-    
+    fn it_works() {}
+
     #[test]
-    fn can_name() {
+    fn has_name() {
       let bob = Character { 
         name:      "Bob" .to_string(),
         alignment: "good".to_string() 
       };
+
       assert!(bob.name == "Bob");
     }
 
@@ -27,7 +27,9 @@ mod test {
         name:      "Francesca".to_string(),
         alignment: "good"     .to_string() 
       };
+
       sally.name = "Sally".to_string();
+      
       assert!(sally.name == "Sally");
     }
 
@@ -39,5 +41,18 @@ mod test {
       };
 
       assert!(surprise.alignment == "neutral");
+    }
+
+    #[test]
+    fn can_change_alignment(){
+      let mut ben = Character {
+        name:      "Ben Solo".to_string(),
+        alignment: "neutral" .to_string()
+      };
+
+      ben.name      = "Kylo Ren".to_string();
+      ben.alignment = "evil"    .to_string();
+
+      assert!(ben.alignment == "evil");
     }
 }
