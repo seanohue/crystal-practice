@@ -1,15 +1,29 @@
-
-
+#[allow(dead_code)]
 struct Character {
-  name: String,
-  alignment: String
+  name:       String,
+  alignment:  String,
+  armorclass: i32,
+  hitpoints:  i32 
+}
+
+impl Default for Character {
+  fn default() -> Character { 
+    Character {
+      name:       "The Nameless One".to_string(),
+      alignment:  "neutral"         .to_string(),
+     
+      // Attributes & Abilities
+      armorclass: 10,
+      hitpoints:  5
+    }
+  }
 }
 
 #[cfg(test)]
 mod test {
 
     use Character;
-    
+
     #[test]
     fn it_works() {}
 
@@ -17,7 +31,9 @@ mod test {
     fn has_name() {
       let bob = Character { 
         name:      "Bob" .to_string(),
-        alignment: "good".to_string() 
+        alignment: "good".to_string(),
+        hitpoints:  Default::default(),
+        armorclass: Default::default()
       };
 
       assert!(bob.name == "Bob");
@@ -27,7 +43,9 @@ mod test {
     fn can_change_name() {
       let mut sally = Character { 
         name:      "Francesca".to_string(),
-        alignment: "good"     .to_string() 
+        alignment: "good"     .to_string(),
+        hitpoints:  Default::default(),
+        armorclass: Default::default() 
       };
 
       sally.name = "Sally".to_string();
@@ -39,22 +57,40 @@ mod test {
     fn has_alignment() {
       let surprise = Character {
         name:      "Ciri"   .to_string(), 
-        alignment: "neutral".to_string()
+        alignment: "neutral".to_string(),
+        hitpoints:  Default::default(),
+        armorclass: Default::default()
       };
 
       assert!(surprise.alignment == "neutral");
     }
 
     #[test]
-    fn can_change_alignment(){
+    fn can_change_alignment() {
       let mut ben = Character {
         name:      "Ben Solo".to_string(),
-        alignment: "neutral" .to_string()
+        alignment: "neutral" .to_string(),
+        hitpoints:  Default::default(),
+        armorclass: Default::default()
       };
 
       ben.name      = "Kylo Ren".to_string();
       ben.alignment = "evil"    .to_string();
 
       assert!(ben.alignment == "evil");
+    }
+
+    #[test]
+    fn has_default_hp() {
+      let yoda: Character = Default::default();
+
+      assert!(yoda.hitpoints == 5);
+    }
+
+    #[test]
+    fn has_default_ac() {
+      let gorgonzola: Character = Default::default();
+
+      assert!(gorgonzola.armorclass == 10);
     }
 }
