@@ -16,4 +16,11 @@ mod test {
       let bob = Character { name: "Bob".to_string() };
       assert!(bob.name == "Bob");
     }
+
+    #[test]
+    fn can_change_name() {
+      let mut sally = Character { name: "Francesca".to_string() };
+      sally.name = "Sally".to_string();
+      assert!(sally.name == "Sally");
+    }
 }
