@@ -1,13 +1,15 @@
 
 
+struct Character {
+  name: String,
+  alignment: String
+}
+
 #[cfg(test)]
 mod test {
 
-    struct Character {
-      name: String,
-      alignment: String
-    }
-
+    use Character;
+    
     #[test]
     fn it_works() {}
 
