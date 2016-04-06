@@ -19,14 +19,14 @@ class Character {
       alignment = alignment.toLowerCase();
 
       if (acceptedAlignments.contains(alignment)) {
-        this._alignment = alignment;
+        _alignment = alignment;
       } else {
         throw new ArgumentError(
           'Invalid alignment. Valid choices are good, neutral, and evil.');
       }
     }
 
-   return this._alignment;
+   return _alignment;
   }
                         // Guaranteed to be random
   bool hit(Character opponent, [int toHitRoll = 4]){
@@ -45,19 +45,18 @@ class Character {
   }
 
   damage([int amount = 1]) {
-    this.hitPoints = this.hitPoints - amount;
+    hitPoints -= amount;
   }
 
   Character( String  name, 
-           { String  alignment:   "neutral",
-             int  armorClass: 10,
-             int  hitPoints:  5 }) 
-  {
-    this.name       = name;
-    this._alignment = alignment;
-    this.armorClass = armorClass;
-    this.hitPoints  = hitPoints;
-  }
+           { String  alignment,
+             int  armorClass,
+             int  hitPoints}) 
+  :
+    _alignment = alignment ?? "neutral",
+    armorClass = armorClass ?? 10,
+    hitPoints  = hitPoints ?? 5;
+  
 }
 
 void main() {
