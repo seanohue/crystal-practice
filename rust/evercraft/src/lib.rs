@@ -13,7 +13,7 @@ mod test {
     
     #[test]
     fn can_name() {
-      let bob = Character { name: "Bob" };
+      let bob = Character { name: "Bob".to_string() };
       assert!(bob.name == "Bob");
     }
 }
