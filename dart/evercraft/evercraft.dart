@@ -1,28 +1,23 @@
 import "package:test/test.dart";
 
+enum Alignment { good, neutral, evil }
+
 class Character {
   String name;
-  String _alignment;
+  Alignment _alignment;
   int armorClass;
   int hitPoints;
   bool alive = true;
 
-  alignment([alignment]) {
-    if (alignment != null) {
-      final acceptedAlignments = ["good", "neutral", "evil"];
-
-      alignment = alignment.toLowerCase();
-
-      if (acceptedAlignments.contains(alignment)) {
-        _alignment = alignment;
-      } else {
-        throw new ArgumentError(
-            'Invalid alignment. Valid choices are good, neutral, and evil.');
-      }
+  void set alignment(Alignment alignment) {
+    if (Alignment.values.contains(alignment)) {
+      _alignment = alignment;
+    } else {
+      throw new ArgumentError("New alignment is invalid.");
     }
-
-    return _alignment;
   }
+
+  Alignment get alignment => _alignment;
 
   // Guaranteed to be random
   bool hit(Character opponent, [int toHitRoll = 4]) {
@@ -44,9 +39,9 @@ class Character {
     hitPoints -= amount;
   }
 
-  Character(String name, {String alignment, int armorClass, int hitPoints})
+  Character(String name, {Alignment alignment, int armorClass, int hitPoints})
       : name = name,
-        _alignment = alignment ?? "neutral",
+        _alignment = alignment ?? Alignment.neutral,
         armorClass = armorClass ?? 10,
         hitPoints = hitPoints ?? 5;
 }
@@ -67,23 +62,23 @@ void main() {
 
       test("should have an alignment", () {
         var testchar = new Character('Frodo');
-        expect(testchar.alignment(), equals('neutral'));
+        expect(testchar.alignment, equals(Alignment.neutral));
       });
 
       test("should be able to change alignment", () {
         var testchar = new Character('Cinder');
-        testchar.alignment("Evil");
-        expect(testchar.alignment(), equals('evil'));
+        testchar.alignment = Alignment.evil;
+        expect(testchar.alignment, equals(Alignment.evil));
       });
 
       test("can be initialized with an alignment", () {
-        var testchar = new Character('Yang', alignment: 'good');
-        expect(testchar.alignment(), equals('good'));
+        var testchar = new Character('Yang', alignment: Alignment.good);
+        expect(testchar.alignment, equals(Alignment.good));
       });
 
       test("should throw exception for invalid alignment", () {
         var testchar = new Character('Bean');
-        expect(() => testchar.alignment('burrito'), throwsArgumentError);
+        expect(() => testchar.alignment = 'burrito', throwsArgumentError);
       });
 
       test("should have armor class, default 10", () {
