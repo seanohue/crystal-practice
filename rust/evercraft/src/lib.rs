@@ -32,8 +32,7 @@ mod test {
       let bob = Character { 
         name:      "Bob" .to_string(),
         alignment: "good".to_string(),
-        hitpoints:  Default::default(),
-        armorclass: Default::default()
+        ..Default::default()
       };
 
       assert!(bob.name == "Bob");
@@ -44,8 +43,7 @@ mod test {
       let mut sally = Character { 
         name:      "Francesca".to_string(),
         alignment: "good"     .to_string(),
-        hitpoints:  Default::default(),
-        armorclass: Default::default() 
+        ..Default::default()
       };
 
       sally.name = "Sally".to_string();
@@ -58,8 +56,7 @@ mod test {
       let surprise = Character {
         name:      "Ciri"   .to_string(), 
         alignment: "neutral".to_string(),
-        hitpoints:  Default::default(),
-        armorclass: Default::default()
+        ..Default::default()
       };
 
       assert!(surprise.alignment == "neutral");
@@ -70,8 +67,7 @@ mod test {
       let mut ben = Character {
         name:      "Ben Solo".to_string(),
         alignment: "neutral" .to_string(),
-        hitpoints:  Default::default(),
-        armorclass: Default::default()
+        ..Default::default()
       };
 
       ben.name      = "Kylo Ren".to_string();

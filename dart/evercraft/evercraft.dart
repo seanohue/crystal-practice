@@ -9,7 +9,7 @@ class Character {
   int hitPoints;
   bool alive = true;
 
-  void set alignment(Alignment alignment) {
+  set alignment(Alignment alignment) {
     if (Alignment.values.contains(alignment)) {
       _alignment = alignment;
     } else {
