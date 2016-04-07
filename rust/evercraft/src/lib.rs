@@ -55,7 +55,6 @@ mod test {
     fn has_alignment() {
       let surprise = Character {
         name:      "Ciri"   .to_string(), 
-        alignment: "neutral".to_string(),
         ..Default::default()
       };
 
@@ -66,7 +65,6 @@ mod test {
     fn can_change_alignment() {
       let mut ben = Character {
         name:      "Ben Solo".to_string(),
-        alignment: "neutral" .to_string(),
         ..Default::default()
       };
 
