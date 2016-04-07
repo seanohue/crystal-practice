@@ -45,6 +45,12 @@ class Character
     @armorclass + get_modifier "dexterity"
   end
 
+  def armorclass(ac)
+    if ac > -1
+      @armorclass = ac
+    end
+  end
+
   def abilities
     @abilities
   end
@@ -67,16 +73,19 @@ class Character
     (@abilities[ability] / 2 - 5).to_i
   end
 
-  def attack(tohit, ac)
-    if tohit < ac
-      return 0
-    end
+  def attack(tohit, defender)
 
     if tohit == 20
-      return 2
+      defender.damage
     end
 
-    return 1
+    if tohit >= defender.armorclass
+      defender.damage
+      return true
+    end
+
+    return false
+
   end
 
   def damage

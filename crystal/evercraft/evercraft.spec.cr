@@ -58,16 +58,19 @@ describe "Character" do
   # As a combatant I want to be able to attack other combatants so that I can survive to fight another day
 
   describe "#attack" do
-    it "returns 1 if roll beats AC" do
-      test_char = Character.new "Pidgeotto"
-      hit = test_char.attack 15, 10
-      hit.should eq 1
+    it "returns true if roll beats AC" do
+      attacker = Character.new "Pidgeotto"
+      defender = Character.new "Magikarp"
+      defender.armorclass 1
+      hit = attacker.attack 15, defender
+      hit.should be_true
     end
 
-    it "returns 0 if roll lower than AC" do
-      test_char = Character.new "Magikarp"
-      hit = test_char.attack 3, 10
-      hit.should eq 0
+    it "returns false if roll lower than AC" do
+      attacker = Character.new "Magikarp"
+      defender = Character.new "Meowth"
+      hit = attacker.attack 1, defender
+      hit.should be_false
     end
   end
 
@@ -77,7 +80,7 @@ describe "Character" do
     it "does 1 damage by default to defender if attack hits" do
       attacker = Character.new "Lion"
       defender = Character.new "Zebra"
-      hit = attacker.attack 10, defender.armorclass
+      hit = attacker.attack 10, defender
       before_hp = defender.hitpoints
 
       if hit
@@ -88,14 +91,10 @@ describe "Character" do
     end
 
     it "can do a specified amount of damage" do
-      attacker = Character.new "Lion"
       defender = Character.new "Zebra"
-      hit = attacker.attack 10, defender.armorclass
       before_hp = defender.hitpoints
 
-      if hit
-        defender.damage 5
-      end
+      defender.damage 5
 
       defender.hitpoints.should eq (before_hp - 5)
     end
@@ -103,12 +102,10 @@ describe "Character" do
     it "does critical damage if attacker rolls a 20" do
       attacker = Character.new "Drizzt"
       defender = Character.new "kobold"
-      hit = attacker.attack 20, defender.armorclass
       before_hp = defender.hitpoints
 
-      if hit
-        defender.damage (hit * 1)
-      end
+      hit = attacker.attack 20, defender
+
       defender.hitpoints.should eq (before_hp - 2)
     end
   end
@@ -175,12 +172,12 @@ describe "Character" do
         tank.set_ability("strength", 18);
         mook = Character.new "Mook"
 
-        it "should add strength bonus to damage dealt"
-          # oh god i need to refactor all of the things
-        end
+        # it "should add strength bonus to damage dealt"
+        # oh god i need to refactor all of the things
+        # end
 
       end
     end
-
   end
 end
+
