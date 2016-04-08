@@ -62,14 +62,14 @@ describe "Character" do
       attacker = Character.new "Pidgeotto"
       defender = Character.new "Magikarp"
       defender.armorclass 1
-      hit = attacker.attack 15, defender
+      hit = attacker.attack(15, defender)
       hit.should be_true
     end
 
     it "returns false if roll lower than AC" do
       attacker = Character.new "Magikarp"
       defender = Character.new "Meowth"
-      hit = attacker.attack 1, defender
+      hit = attacker.attack(1, defender)
       hit.should be_false
     end
   end
@@ -80,12 +80,9 @@ describe "Character" do
     it "does 1 damage by default to defender if attack hits" do
       attacker = Character.new "Lion"
       defender = Character.new "Zebra"
-      hit = attacker.attack 10, defender
       before_hp = defender.hitpoints
 
-      if hit
-        defender.damage
-      end
+      attacker.attack(10, defender)
 
       defender.hitpoints.should eq (before_hp - 1)
     end
@@ -104,7 +101,7 @@ describe "Character" do
       defender = Character.new "kobold"
       before_hp = defender.hitpoints
 
-      hit = attacker.attack 20, defender
+      attacker.attack(20, defender)
 
       defender.hitpoints.should eq (before_hp - 2)
     end
