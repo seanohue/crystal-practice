@@ -169,10 +169,11 @@ describe "Character" do
         tank.set_ability("strength", 18);
         mook = Character.new "Mook"
 
-        # it "should add strength bonus to damage dealt"
-        # oh god i need to refactor all of the things
-        # end
-
+        it "should add strength bonus to damage dealt" do
+          before_hp = mook.hitpoints
+          tank.attack(12, mook)
+          mook.hitpoints.should eq (before_hp - 5)
+        end
       end
     end
   end

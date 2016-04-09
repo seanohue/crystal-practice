@@ -75,12 +75,14 @@ class Character
 
   def attack(tohit, defender)
 
+    power = 1 + get_modifier "strength"
+
     if tohit == 20
-      defender.damage
+      defender.damage power
     end
 
     if tohit >= defender.armorclass
-      defender.damage
+      defender.damage power
       return true
     end
 
