@@ -38,6 +38,10 @@ class Character
     @hitpoints
   end
 
+  def heal(amount)
+    @hitpoints += amount
+  end
+
   def armorclass
     @armorclass + get_modifier("dexterity")
   end
@@ -72,13 +76,18 @@ class Character
 
   def attack(tohit, defender)
 
-    power = 1 + get_modifier "strength"
+    str_mod = get_modifier "strength"
+    power = 1 + str_mod
+    
+    if power < 1 
+      power = 1
+    end
 
     if tohit == 20
       defender.damage power
     end
 
-    if tohit >= defender.armorclass
+    if (tohit + str_mod) >= defender.armorclass
       defender.damage power
       return true
     end

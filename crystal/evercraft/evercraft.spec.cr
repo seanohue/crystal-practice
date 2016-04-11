@@ -174,6 +174,16 @@ describe "Character" do
           tank.attack(12, mook)
           mook.hitpoints.should eq (before_hp - 5)
         end
+
+        # consider using before/after
+        mook.heal 5
+
+        it "should add to tohit roll" do
+          before_hp = mook.hitpoints
+          tank.attack(6, mook)
+          mook.hitpoints.should eq (before_hp - 5)
+        end
+
       end
     end
   end
