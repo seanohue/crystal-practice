@@ -1,5 +1,5 @@
-require "./evercraft"
 require "spec"
+require "./evercraft"
 
 describe "Character" do
 
