@@ -1,18 +1,17 @@
 class Character
   def initialize(name)
-    @name       = name
-    @alignment  = "Neutral"
-    @hitpoints  = 10
+    @name = name
+    @alignment = "Neutral"
+    @hitpoints = 10
     @armorclass = 5
-    @abilities  = {
+    @abilities = {
       "constitution": 10,
       "strength":     10,
       "dexterity":    10,
       "wisdom":       10,
       "charisma":     10,
-      "intelligence": 10
+      "intelligence": 10,
     }
-
   end
 
   def name
@@ -61,7 +60,7 @@ class Character
   end
 
   def set_ability(ability, score)
-    if score < 0 
+    if score < 0
       score = 0
     elsif score > 20
       score = 20
@@ -75,11 +74,9 @@ class Character
   end
 
   def attack(tohit, defender)
-
     str_mod = get_modifier "strength"
     power = 1 + str_mod
-    
-    if power < 1 
+    if power < 1
       power = 1
     end
 
@@ -93,7 +90,6 @@ class Character
     end
 
     return false
-
   end
 
   def damage
@@ -103,8 +99,4 @@ class Character
   def damage(inflicted)
     @hitpoints -= inflicted
   end
-
 end
-
-
-

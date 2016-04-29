@@ -2,7 +2,6 @@ require "spec"
 require "./evercraft"
 
 describe "Character" do
-
   # As a character I want to have a name so that I can be distinguished from other characters
 
   describe "#name" do
@@ -10,11 +9,10 @@ describe "Character" do
       test_char = Character.new "Triss"
       test_char.name.should eq "Triss"
     end
-    
     it "correctly sets the name" do
       test_char = Character.new "Bob"
       test_char.name "Frangelica"
-      test_char.name.should eq "Frangelica" 
+      test_char.name.should eq "Frangelica"
     end
   end
 
@@ -107,8 +105,7 @@ describe "Character" do
     end
   end
 
-# As a character I want to have several abilities so that I am not identical to other characters except in name
-
+  # As a character I want to have several abilities so that I am not identical to other characters except in name
 
   describe "#abilities" do
     it "defaults to 10 for all abilities" do
@@ -132,7 +129,7 @@ describe "Character" do
 
     it "should have a modifier score" do
       test_char = Character.new "Average"
-      str_mod = test_char.get_modifier "strength" 
+      str_mod = test_char.get_modifier "strength"
       str_mod.should eq 0
     end
 
@@ -151,13 +148,11 @@ describe "Character" do
       rogue.set_ability("dexterity", 16)
       dex_mod = rogue.get_modifier "dexterity"
       dex_mod.should eq 3
-
     end
 
     # As a character I want to apply my ability modifiers improve my capabilities in combat so that I can vanquish my enemy with extreme prejudice
 
     describe "ability bonuses" do
-
       it "should add dexterity bonus to armor class" do
         ninja = Character.new "Ninja"
         ninja.set_ability("dexterity", 20)
@@ -166,7 +161,7 @@ describe "Character" do
 
       describe "strength bonuses" do
         tank = Character.new "Tank"
-        tank.set_ability("strength", 18);
+        tank.set_ability("strength", 18)
         mook = Character.new "Mook"
 
         it "should add strength bonus to damage dealt" do
@@ -183,9 +178,7 @@ describe "Character" do
           tank.attack(6, mook)
           mook.hitpoints.should eq (before_hp - 5)
         end
-
       end
     end
   end
 end
-
