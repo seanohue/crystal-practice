@@ -170,7 +170,6 @@ describe "Character" do
           mook.hitpoints.should eq (before_hp - 5)
         end
 
-        # consider using before/after each to reset character
         mook.heal(5)
 
         it "should add to tohit roll" do
@@ -178,6 +177,14 @@ describe "Character" do
           tank.attack(6, mook)
           mook.hitpoints.should eq (before_hp - 5)
         end
+
+        it "has a minimum damage of 1 when hitting" do
+          before_hp = tank.hitpoints
+          mook.set_ability("strength", 1)
+          mook.attack(10, tank)
+          tank.hitpoints.should eq (before_hp - 1)
+        end
+
       end
     end
   end
