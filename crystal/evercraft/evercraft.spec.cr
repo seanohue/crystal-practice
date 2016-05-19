@@ -186,6 +186,24 @@ describe "Character" do
         end
 
       end
+
+      describe "constitution bonuses" do
+
+        it "should add to hp" do
+          beefy = Character.new("Beef")
+          beefy.set_ability("constitution", 20)
+          beefy.hitpoints.should eq 15
+        end
+
+        it "should have at least 1 hp though" do
+          wimpy = Character.new("Wimp")
+          wimpy.hitpoints(3)
+          wimpy.set_ability("constitution", 1)
+          wimpy.hitpoints.should eq 1
+        end
+
+      end
+
     end
   end
 end

@@ -37,6 +37,10 @@ class Character
     @hitpoints
   end
 
+  def hitpoints(amount)
+    @hitpoints = amount
+  end
+
   def heal(amount)
     @hitpoints += amount
   end
