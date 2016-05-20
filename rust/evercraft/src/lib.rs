@@ -19,7 +19,14 @@ impl Default for Character {
     }
 }
 
-fn attack(attacker: &Character, Defender: &mut Character) {}
+impl Character {
+
+    fn attack(&mut self, defender: &mut Character) {
+
+    }
+
+}
+
 
 #[cfg(test)]
 mod test {
@@ -89,7 +96,7 @@ mod test {
         let mut remy: Character = Default::default();
         let mut lacroix: Character = Default::default();
 
-        attack(&remy, &mut lacroix);
+        remy.attack(&mut lacroix);
 
         assert!(lacroix.hitpoints == 4);
     }
